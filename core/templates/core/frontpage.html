@@ -13,9 +13,11 @@
         <div class="column is-4">
             <div class="card large">
                 <div class="card-image">
+                    {% if one_news.image %}
                     <figure class="image is-16by9">
-                    <img src="https://4.bp.blogspot.com/-tcdStPQb2J0/XJXaLurRjcI/AAAAAAAAFfU/zKGRzK-kIDg_2y1EMEXUdbr4zC0K7u2zgCEwYBhgL/s1600/spring.jpg" alt="Image">
+                        <img src="{{ one_news.image.url }}">
                     </figure>
+                    {% endif %}
                 </div>
                 <div class="card-content">
                     <p class="title is-4 no-padding">{{ one_news.title  }}</p>

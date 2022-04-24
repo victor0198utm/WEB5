@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <head>
+        <title>Log in</title>
+        <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.3/css/bulma.min.css" />
+    </head>
+    <body>
+        {% include 'core/navbar.html' with brand_name=brand_name %}
+        <section class="section">
+            <div class="container">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-success">Add news</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>Neooz.com</p>
+            </div>
+        </footer>
+
+    </body>
+</html>
