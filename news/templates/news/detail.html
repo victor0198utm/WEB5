@@ -1,0 +1,8 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>{{ news.title }}</h1>
+<h4>{{ news.description }}</h4>
+<p>{{ news.body }}</p>
+<p>{{ news.date_added|date:'d/m/Y, H:i' }}</p>
+{% endblock %}

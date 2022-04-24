@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>News type</h1>
+<input type="radio" id="public" name="news_access_type" value="Public"  checked="checked"/>
+<label for="public">Public</label><br>
+<input type="radio" id="protected" name="news_access_type" value="Protected"/>
+<label for="protected">Protected</label><br>
+<input type="radio" id="private" name="news_access_type" value="Private"/>
+<label for="private">Private</label><br>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <div class="field">
+        <div class="control">
+            <button class="button is-success">Add news</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    let password_form = document.getElementById("id_password"); 
+    let protected_form = document.getElementById("id_protected");
+    protected_form.checked = false;
+    let private_form = document.getElementById("id_private");
+    private_form.checked = false;
+    password_form.parentNode.classList = "is-hidden";
+    protected_form.parentNode.classList = "is-hidden";
+    private_form.parentNode.classList = "is-hidden";
+    let public = document.getElementById("public");
+    let protected = document.getElementById("protected");
+    let private = document.getElementById("private");
+    public.addEventListener("click", function(){ 
+            if(public.checked) {
+                console.log("Is public!"); 
+                password_form.parentNode.classList = "is-hidden";
+                protected_form.checked = false;
+                private_form.checked = false;
+            }
+        }
+    ); 
+    protected.addEventListener("click", function(){ 
+            if(protected.checked) {
+                console.log("Is protected!"); 
+                password_form.parentNode.classList = "";
+                protected_form.checked = true;
+                private_form.checked = false;
+            }
+        }
+    ); 
+    private.addEventListener("click", function(){ 
+            if(private.checked) {
+                console.log("Is private!"); 
+                password_form.parentNode.classList = "is-hidden";
+                protected_form.checked = false;
+                private_form.checked = true;
+            }
+        }
+    ); 
+</script>
+
+{% endblock %}

@@ -8,32 +8,38 @@
       </div>
     </div>
     <div id="app" class="row columns is-multiline">
-      <div v-for="card in cardData" key="card.id" class="column is-4">
-        <div class="card large">
-          <div class="card-image">
-            <figure class="image is-16by9">
-              <img src="https://4.bp.blogspot.com/-tcdStPQb2J0/XJXaLurRjcI/AAAAAAAAFfU/zKGRzK-kIDg_2y1EMEXUdbr4zC0K7u2zgCEwYBhgL/s1600/spring.jpg" alt="Image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <p class="title is-4 no-padding">Title</p>
-            <div class="content">
-                Content
-                <div class="background-icon"><span class="icon-twitter"></span></div>
+      
+      {% for one_news in news %}
+        <div class="column is-4">
+            <div class="card large">
+                <div class="card-image">
+                    <figure class="image is-16by9">
+                    <img src="https://4.bp.blogspot.com/-tcdStPQb2J0/XJXaLurRjcI/AAAAAAAAFfU/zKGRzK-kIDg_2y1EMEXUdbr4zC0K7u2zgCEwYBhgL/s1600/spring.jpg" alt="Image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <p class="title is-4 no-padding">{{ one_news.title  }}</p>
+                    <div class="content">
+                        {{ one_news.description }}
+                        <p>
+                            <span class="title is-6">
+                                <a href="{% url 'news_detail' one_news.slug %}"> Read more </a> 
+                            </span> 
+                        </p>
+                    </div>
+                    <div class="media">
+                        <div class="media-content">    
+                            
+                            <p class="subtitle is-6">{{ one_news.date_added|date:'d/m/Y, H:i' }}</p>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
-            <div class="media">
-              <div class="media-content">
-                
-                <p>
-                  <span class="title is-6">
-                    <a :href=`http://twitter.com/${card.user.handle}`> handle </a> </span> </p>
-                <p class="subtitle is-6">User title</p>
-              </div>
-            </div>
-            
-          </div>
         </div>
-      </div>
+
+      {% endfor %}
+      
     </div>
   </div>
 {% endblock %}
