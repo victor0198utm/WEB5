@@ -5,11 +5,6 @@ from .models import Profile
 
 
 class UserForm(UserChangeForm):
-    # groups = None
-    # user_permissions = None
-    # staff_status = None
-    # active = None
-    # date_joined = None
 
     class Meta:
         model = User
@@ -20,8 +15,3 @@ class UserForm(UserChangeForm):
             'email',
             'password',
             )
-
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ('want_to_edit',)

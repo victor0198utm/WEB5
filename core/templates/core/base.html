@@ -1,11 +1,23 @@
 <!DOCTYPE html>
     <head>
-        <title>Django app</title>
+        <title>Neooz.com</title>
         <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.3/css/bulma.min.css" />
+        <style>
+            form li{
+                list-style-type: none;
+                margin: 10px;
+            }
+            .space{
+                margin: 30px;
+            }
+            .f22{
+                font-size: 22px;
+            }
+        </style>
     </head>
     <body>
         {% include 'core/navbar.html' %}
-        <section class="section">
+        <section class="section" style="min-height: calc(100vh - 200px);">
             <div class="container">
                 {% block content %}
                 {% endblock %}

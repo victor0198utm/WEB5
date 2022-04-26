@@ -35,11 +35,11 @@
                                 <a class="nav-link" href="/roles/edit_profile">Edit profile</a>
                             </li>
                             <li class="navbar-item {% if request.path == login_url %} active {%endif%}">
-                                <a class="nav-link" href="/roles/logout">Logout</a>
+                                <a class="nav-link" href="/roles/logout">Log out</a>
                             </li>
                         {% else %}
                             <li class="navbar-item {% if request.path == login_url %} active {%endif%}">
-                                <a class="nav-link" href="/roles/login">Login</a>
+                                <a class="nav-link" href="/roles/login">Log in</a>
                             </li>
                             <li class="navbar-item {% if request.path == register_url %} active {%endif%}">
                                 <a class="nav-link" href="/roles/register">Register</a>

@@ -55,7 +55,9 @@
     
     {% if not news %}
         <p>You have not created news yet!</p>
-        <p><a href="/add">Add news</a></p>
+        {% if profile.is_editor %}
+            <p><a href="/add">Add news</a></p>
+        {% endif %}
     {% endif %}
 </div>
 

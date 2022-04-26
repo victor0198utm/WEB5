@@ -1,7 +1,8 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<h1>News type</h1>
+<h1 class="title">Create news</h1>
+<h1 class="has-text-weight-semibold">Access type</h1>
 <input type="radio" id="public" name="news_access_type" value="Public"  checked="checked"/>
 <label for="public">Public</label><br>
 <input type="radio" id="protected" name="news_access_type" value="Protected"/>
@@ -10,7 +11,7 @@
 <label for="private">Private</label><br>
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p}}
+    {{ form.as_ul}}
     <div class="field">
         <div class="control">
             <button class="button is-success">Add news</button>

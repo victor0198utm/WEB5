@@ -2,6 +2,12 @@
     <head>
         <title>Edit profile</title>
         <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.3/css/bulma.min.css" />
+        <style>
+            form li{
+                list-style-type: none;
+                margin: 10px;
+            }
+        </style>
     </head>
     <body>
         {% include 'core/navbar.html' %}
@@ -10,7 +16,7 @@
                 <p class="title">Edit profile</p>
                 <form method="POST">
                     {% csrf_token %}
-                    {{ form.as_p}}
+                    {{ form.as_ul}}
                     <div class="field">
                         <div class="control">
                             <button class="button is-success">Edit</button>

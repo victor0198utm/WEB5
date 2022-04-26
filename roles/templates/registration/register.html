@@ -2,14 +2,21 @@
     <head>
         <title>Register</title>
         <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.3/css/bulma.min.css" />
+        <style>
+            form li{
+                list-style-type: none;
+                margin: 10px;
+            }
+        </style>
     </head>
     <body>
         {% include 'core/navbar.html' %}
-        <section class="section">
+        <section class="section"  style="min-height: calc(100vh - 200px);">
             <div class="container">
+                <p class="title">Register</p>
                 <form method="POST">
                     {% csrf_token %}
-                    {{ form.as_p}}
+                    {{ form.as_ul}}
                     <div class="field">
                         <div class="control">
                             <button class="button is-success">Register</button>

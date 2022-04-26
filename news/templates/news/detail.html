@@ -7,10 +7,12 @@
     <img src="{{ news.image.url }}">
 </figure>
 {% endif %}
-<h4>{{ news.description }}</h4>
-<p>{{ news.body }}</p>
-<p>{{ news.date_added|date:'d/m/Y, H:i' }}</p>
+<h4 class="space f22 has-text-weight-semibold">{{ news.description }}</h4>
+<p  class="space">{{ news.body }}</p>
+<p  class="space">{{ news.date_added|date:'d/m/Y, H:i' }}</p>
 {% if editable %}
-<a href="update">Edit news</a>
+<div class="content has-text-centered">
+    <a href="update">Edit news</a>
+</div>
 {% endif %}
 {% endblock %}
