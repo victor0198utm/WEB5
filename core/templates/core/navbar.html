@@ -1,62 +1,49 @@
 <nav class="navbar">
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item" href="../">
-                <h3>Neooz</h3>
+            <a class="navbar-item" href="/">
+                <h3 class="title">Neooz</h3>
             </a>
-            <span class="navbar-burger burger" data-target="navbarMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-            </span>
+            <a id="burgerbtn" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
         </div>
         <div id="navbarMenu" class="navbar-menu">
             <div class="navbar-end">
-                <a class="navbar-item is-active">
-                        Home
-                    </a>
-                <a class="navbar-item">
-                        Examples
-                    </a>
-                <a href="/roles/logout" class="navbar-item">
-                        Log out
-                    </a>
-                <a href="/roles/register" class="navbar-item">
-                        Register
-                    </a>
-                <a href="/roles/login" class="navbar-item">
-                        Log in
-                    </a>
-                <a href="/add" class="navbar-item">
+                {% if request.user.profile.is_editor %}
+                    <a href="/add" class="navbar-item">
                         Add news
                     </a>
+                {% endif %}
+
+                {% if request.user.is_authenticated %}
+                    <a href="/roles/dashboard" class="navbar-item">
+                        Dashboard
+                    </a>
+                {% endif %}
+
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                             Account
                         </a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                                Dashboard
-                            </a>
-                        <a class="navbar-item">
-                                Profile
-                            </a>
-                        <a class="navbar-item">
-                                Settings
-                            </a>
-                        <hr class="navbar-divider">
-
                         {% if request.user.is_authenticated %}
-                        <li class="navbar-item {% if request.path == login_url %} active {%endif%}">
-                            <a class="nav-link" href="/roles/logout">Logout</a>
-                        </li>
+                            <p class="navbar-item has-text-weight-semibold">{{request.user}}</p>
+                            <li class="navbar-item">
+                                <a class="nav-link" href="/roles/edit_profile">Edit profile</a>
+                            </li>
+                            <li class="navbar-item {% if request.path == login_url %} active {%endif%}">
+                                <a class="nav-link" href="/roles/logout">Logout</a>
+                            </li>
                         {% else %}
-                        <li class="navbar-item {% if request.path == login_url %} active {%endif%}">
-                            <a class="nav-link" href="/roles/login">Login</a>
-                        </li>
-                        <li class="navbar-item {% if request.path == register_url %} active {%endif%}">
-                            <a class="nav-link" href="/roles/register">Register</a>
-                        </li>
+                            <li class="navbar-item {% if request.path == login_url %} active {%endif%}">
+                                <a class="nav-link" href="/roles/login">Login</a>
+                            </li>
+                            <li class="navbar-item {% if request.path == register_url %} active {%endif%}">
+                                <a class="nav-link" href="/roles/register">Register</a>
+                            </li>
                         {% endif %}
                     </div>
                 </div>
@@ -64,3 +51,19 @@
         </div>
     </div>
 </nav>
+
+<script>
+    let burgerbtn = document.getElementById("burgerbtn");
+    burgerbtn.addEventListener("click", function(){ 
+        console.log("here!");
+        let navbarMenu = document.getElementById("navbarMenu");
+        console.log(navbarMenu);
+        console.log(navbarMenu.classList);
+        if (navbarMenu.classList.length == 1){
+            navbarMenu.classList="navbar-menu is-active";
+        }else{
+            navbarMenu.classList="navbar-menu";
+        }
+    }); 
+
+</script>

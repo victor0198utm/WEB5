@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+{% if not profile.is_editor %}
+    {% if profile.want_to_edit %}
+        <p>Your request to be an editor was sent!</p>
+    {% else %}
+        <a href="/roles/edit_request">Request to be an editor</a>
+    {% endif %}
+{% endif %}
+
+
+<div class="section">
+    <div class="columns">
+        <div class="column has-text-centered">
+        <h1 class="title">{{ user.username }}'s news</h1><br>
+        </div>
+    </div>
+    {% if news %}
+        <div id="app" class="row columns is-multiline">  
+            {% for one_news in news %}
+            <div class="column is-4">
+                <div class="card large">
+                    <div class="card-image">
+                        {% if one_news.image %}
+                        <figure class="image is-16by9">
+                            <img src="{{ one_news.image.url }}">
+                        </figure>
+                        {% endif %}
+                    </div>
+                    <div class="card-content">
+                        <p class="title is-4 no-padding">{{ one_news.title  }}</p>
+                        <div class="content">
+                            {{ one_news.description }}
+                            <p>
+                                <span class="title is-6">
+                                    <a href="{% url 'news_detail' one_news.slug %}"> Read more </a> 
+                                </span> 
+                            </p>
+                        </div>
+                        <div class="media">
+                            <div class="media-content">    
+                                
+                                <p class="subtitle is-6">{{ one_news.date_added|date:'d/m/Y, H:i' }}</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    {% if not news %}
+        <p>You have not created news yet!</p>
+        <p><a href="/add">Add news</a></p>
+    {% endif %}
+</div>
+
+{% endblock %}
